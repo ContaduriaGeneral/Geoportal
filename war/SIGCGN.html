@@ -1,0 +1,152 @@
+<!doctype html>
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="SIGCGN.css">
+<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<title>SIGCGN</title>
+<script type="text/javascript" src="sigcgn/sigcgn.nocache.js"></script>
+<script	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script type="text/javascript" src="resource/js/sig.js"></script>
+
+
+</head>
+<body style="background-color: #EBEBEB">
+
+	<div align="center">
+		<font size="5" color="005454" face="arial"> <b>GEOPORTAL SIGCGN</b></font>
+	</div>
+
+	<div style="background-color: #EBEBEB" class="panel">
+		<div class="panel-body ">
+			<div class="panel-primary panel-ajuste"
+				style="border: 1px solid #005454">
+				<div class="panel-heading" align="center">MAPA DE CONSULTA
+					INTERACTIVO</div>
+				<div class="panel-body">
+					<p>	En el Geoportal de Información Contable Pública podrá consultar la información contable
+						pública de primer nivel reportada de <b>los últimos tres (3)
+						años de la Gobernación, Alcaldia o Entidad</b>
+						haciendo uso del mapa georreferenciado de Colombia.
+						<br /> <br /> <b>Instrucciones:</b> <br /> <br />
+						- Elegir el tipo de capa que se desea consultar en la opción <b>Seleccionar mapa</b>
+						dependiendo del elemento que se desea Buscar. <br />
+												
+						- Seleccionar el elemento que se desea consultar, ya sea navegando y
+						seleccionando en el mapa o utilizando el sistema de búsqueda por
+						texto.<br />
+						
+						- Usar el botón <img title="Buscar" class="img"
+							src="./resource/img/lupa.jpg"><b>Buscar</b> para realizar una consula en 
+							la capa actual.<br />
+						
+						- Usar el botón <img title="Limpiar Mapa" class="img"
+							src="./resource/img/colombia.jpg"><b>Limpiar Mapa</b> para reestablecer
+						el Mapa.<br />
+					
+					<p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-lg-6 col-md-6">
+
+		<div id ="inicio">
+				<a id = "tablainfo"></a><div class="panel-primary panel-ajuste">
+				<div id="inf" class="panel-heading">INFORMACIÓN DE LA GOBERNACIÓN</div>
+				<div class="panel-body" id="info"></div>
+			</div>
+			<br />
+		</div>
+		<div>
+			<div class="panel-primary panel-ajuste">
+				<div class="panel-heading">TABLA DE VALORES</div>
+				<div class="panel-body" id="datagrid"></div>
+			</div>
+		</div>
+		<br />
+		<div>
+			<div style="background-color: #EBEBEB" class="panel-primary panel-ajuste">
+				<div class="panel-heading">GRÁFICA DE VALORES</div>
+				<div class="panel-body" id="chartDiv"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-6 col-md-6">
+
+
+		<div class="row">
+
+			<div class="col-sm-4">
+				<div class="panel-primary panel-ajuste">
+					<div class="panel-heading">Seleccionar Mapa</div>
+					<div style="margin: 5px;">
+
+						<input id=DEP type="radio" name="capa" value="deptos"
+							checked="checked" onclick="cargarCapa2('Departamentos.json');" /><label
+							style="font-size: small; font-weight: normal;">
+							Departamentos</label><br /> 
+							
+							<input id=MUN type="radio" name="capa"
+							value="mnpios" onclick="cargarCapa2('Municipios.json');" /><label
+							style="font-size: small; font-weight: normal;">
+							Municipios</label><br /> 
+							
+							<input id=ENT type="radio" name="capa"
+							value="entids" onclick="MostrarOcultarcoor('CoorR.json');" /><label
+							style="font-size: small; font-weight: normal;">
+							Entidades</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-8">
+				<div class="panel-primary panel-ajuste">
+					<div id="busqueda" class="panel-heading">Buscar Departamento:</div>
+					<div style="margin: 10px;" id="gwtContainer"></div>
+					<div><a href="#tablainfo">
+						
+						<button style="margin: 6px;" onclick="botonConsult()"
+							type="button" accesskey="Intro" class="btn btn-default">
+							<img class="img" src='./resource/img/lupa.jpg' style="vertical-align: middle;"
+								alt="consult" /> Buscar</button></a>
+
+						<button style="margin: 6px;" onclick="botonResetMap()"
+							class="btn btn-default" type='button' name='continuar'
+							class='textonegro' style='width: 135; height: 26;'>
+							<img class="img" src='./resource/img/colombia.jpg' style="vertical-align: middle;"
+								alt="Limpiar Mapa" /> Limpiar Mapa
+						</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<br />
+
+		<div class="div">
+			<div style="color: #FFFFFF" class="panel-heading" id="info-box">COLOMBIA</div>
+
+			<div id="map" class="google-maps"></div>
+		</div>
+	</div>	
+		
+<!-- GOOGLE ANALYTICS		 -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78200033-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
